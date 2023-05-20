@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { View, Picker, StyleSheet } from 'react-native';
 import { 
   KeyboardView, 
   Container, 
@@ -11,8 +12,26 @@ import { Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
-export function Signup() {
+export function SignupService() {
   const navigation = useNavigation()
+
+  const styles = StyleSheet.create({
+  picker: {
+    backgroundColor: '#f2f2f2',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    height: 60,
+    width: 290,
+    paddingHorizontal: 10,
+  },
+  item: {
+    fontSize: 16,
+    color: 'blue',
+  },
+});
+
+  const [selectedValue, setSelectedValue] = useState('');
 
   return(
     <KeyboardView style={{backgroundColor: 'blue', height: 2000}}>
@@ -21,7 +40,7 @@ export function Signup() {
         <Text style={{ color: 'white', fontSize: 32, fontWeight:'bold', textAlign: 'center' }}>Spot</Text>
         <Text style={{ color: '#F7C425', fontSize: 32, fontWeight:'bold', textAlign: 'center' }}>Less</Text>
         </Container>
-        <Container style={{}} >
+        <Container style={{height: 2000}} >
         <Input 
         style={{ 
           borderColor: 'white',
@@ -58,6 +77,21 @@ export function Signup() {
           placeholder="Confirmar Senha"
           secureTextEntry
         />
+        <View style={{}}>
+        <Picker
+        style={styles.picker}
+        itemStyle={styles.item}
+        mode="dropdown"
+        prompt="Selecione uma opção"
+        selectedValue={selectedValue}
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
+            >
+            <Picker.Item label="Marceneiro" value="Marceneiro" />
+            <Picker.Item label="Encanador" value="Encanador" />
+            <Picker.Item label="Pedreiro" value="Pedreiro" />
+        </Picker>
+        </View>
+        <br></br>
         <ButtonSubmit style={{backgroundColor: 'white'}} onPress={() => navigation.navigate('adress')}>
           <TextButton style={{color: 'blue'}}>
             Cadastrar
@@ -69,4 +103,4 @@ export function Signup() {
   )
 }
 
-export default Signup
+export default SignupService

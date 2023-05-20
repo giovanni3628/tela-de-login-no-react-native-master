@@ -7,46 +7,55 @@ import {
   TextButton
 } from './styles';
 import Header from '../../components/Header';
-import { Text } from 'react-native';
+import { Text, Image, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
-export function Signup() {
+export function AdressSignUp() {
   const navigation = useNavigation()
 
   return(
-    <KeyboardView style={{backgroundColor: 'blue', height: 2000}}>
-      <Container style={{ backgroundColor: '#081038', borderRadius: 12, maxHeight: 700}}>
-        <Container >
+    <KeyboardView style={{backgroundColor: 'blue'}}>
+      <Container>
+        <Container>
+        <View>
+          <Image style={{color: 'white'}} source={require('../../assets/splash.png')} />
+        </View>
         <Text style={{ color: 'white', fontSize: 32, fontWeight:'bold', textAlign: 'center' }}>Spot</Text>
         <Text style={{ color: '#F7C425', fontSize: 32, fontWeight:'bold', textAlign: 'center' }}>Less</Text>
+            <br></br>
+        <Text style={{ 
+            color: 'white', 
+            fontSize: 24, 
+            fontWeight:'bold', 
+            textAlign: 'left' 
+            }}
+            >Olá, Giovanni</Text>
+        <Text 
+        style={{ 
+            color: '#F7C425', 
+            fontSize: 16, 
+            fontWeight:'bold', 
+            textAlign: 'left' 
+            }}
+            >Para finalizar o seu cadastro, precisamos do seu endereço. Por favor, forneça-nos essa informação.
+            </Text>
         </Container>
-        <Container style={{}} >
         <Input 
         style={{ 
           borderColor: 'white',
           backgroundColor: 'white'
         }}
           placeholderTextColor="gray"
-          placeholder="Nome"
+          placeholder="Estado"
         />
-
         <Input 
         style={{ 
           borderColor: 'white',
           backgroundColor: 'white'
         }}
           placeholderTextColor="gray"
-          placeholder="E-mail"
-        />
-
-        <Input 
-        style={{ 
-          borderColor: 'white',
-          backgroundColor: 'white'
-        }}
-          placeholderTextColor="gray"
-          placeholder="Senha"
+          placeholder="Cidade"
           secureTextEntry
         />
         <Input 
@@ -55,18 +64,35 @@ export function Signup() {
           backgroundColor: 'white'
         }}
           placeholderTextColor="gray"
-          placeholder="Confirmar Senha"
+          placeholder="Rua"
           secureTextEntry
         />
-        <ButtonSubmit style={{backgroundColor: 'white'}} onPress={() => navigation.navigate('adress')}>
+        <Input 
+        style={{ 
+          borderColor: 'white',
+          backgroundColor: 'white'
+        }}
+          placeholderTextColor="gray"
+          placeholder="Número"
+          secureTextEntry
+        />
+        <Input 
+        style={{ 
+          borderColor: 'white',
+          backgroundColor: 'white'
+        }}
+          placeholderTextColor="gray"
+          placeholder="Complemento"
+          secureTextEntry
+        />
+        <ButtonSubmit style={{backgroundColor: 'white'}} onPress={() => navigation.navigate('preCadastro')}>
           <TextButton style={{color: 'blue'}}>
-            Cadastrar
+            Prosseguir
           </TextButton>
         </ButtonSubmit>
-        </Container>
       </Container>
     </KeyboardView>
   )
 }
 
-export default Signup
+export default AdressSignUp;
